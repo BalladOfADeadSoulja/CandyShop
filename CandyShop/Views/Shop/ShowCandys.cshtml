@@ -1,0 +1,40 @@
+﻿@model IEnumerable<CandyShop.Models.Candy>
+
+@{
+    ViewData["Title"] = "Show Candy";
+}
+
+<h2>Candy List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Size</th>
+            <th>Quantity</th>
+            <th>Description</th>
+            <th>Категория</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.Name</td>
+                <td>@c.Price</td>
+                <td>@c.Size</td>
+                <td>@c.Quantity</td>
+                <td>@c.Description</td>
+                <td>@c.Category.Name</td>
+                <td>
+                    <a href="/edit/@c.Id" class="btn btn-primary">Edit</a>
+                    <form method="post" action="/delete/@c.Id" style="display:inline;">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
